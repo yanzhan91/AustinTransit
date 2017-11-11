@@ -10,9 +10,12 @@ import SetIntent
 import GetIntent
 
 import logging as log
+import random
 
 app = Flask(__name__)
 ask = Ask(app, '/')
+adjectives = ['adorable', 'gorgeous', 'beautiful', 'amazing', 'incredible', 'talented', 'elegant', 'clever',
+              'charming', 'dazzling', 'fabulous', 'graceful', 'lovely', 'intelligent', 'perfect', 'wonderful']
 
 
 @ask.launch
@@ -95,6 +98,13 @@ def get_intent(preset, agency):
     message = GetIntent.get(context.System.user.userId, preset,
                             '%s-%s' % (os.environ['city'].lower(), agency.replace(' ', '-')))
     log.info('Response message = %s', message)
+
+    if context.System.user.userId == 'amzn1.ask.account.AG45VG6TQYHOLHETZSHBHS4SGKSM2AGOCDGJYUS4JZ6H76VXODFLP5Z' \
+                                     'F2FGHEPJJJ5DKWUPXZCJD2OIDSWXKEPP7SZAAP5U774DDBGEL7WJOKDDTUKFAGGEGQ6X7F44I' \
+                                     'X6PZMIAEKRJ2VQJHFYY5UFRWLSETZUMBBXB7W7YTAARPUSJTAMTK3KX2Q7VZYP7FF4YB2JYRU' \
+                                     'IYJIGI':
+        message = 'My %s boo boo. %s' % (random.choice(adjectives), message)
+
     return generate_statement_card(message, 'Get Status')
 
 
