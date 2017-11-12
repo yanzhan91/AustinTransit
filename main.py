@@ -99,11 +99,10 @@ def get_intent(preset, agency):
                             '%s-%s' % (os.environ['city'].lower(), agency.replace(' ', '-')))
     log.info('Response message = %s', message)
 
-    if context.System.user.userId == 'amzn1.ask.account.AG45VG6TQYHOLHETZSHBHS4SGKSM2AGOCDGJYUS4JZ6H76VXODFLP5Z' \
-                                     'F2FGHEPJJJ5DKWUPXZCJD2OIDSWXKEPP7SZAAP5U774DDBGEL7WJOKDDTUKFAGGEGQ6X7F44I' \
-                                     'X6PZMIAEKRJ2VQJHFYY5UFRWLSETZUMBBXB7W7YTAARPUSJTAMTK3KX2Q7VZYP7FF4YB2JYRU' \
-                                     'IYJIGI':
-        message = 'My %s boo boo. %s' % (random.choice(adjectives), message)
+    if context.System.user.userId == 'amzn1.ask.account.AFG7H2KWAEWI4FGY7Q76AEH6J53IUWUJE34FPKJRI5NNYOKEHKMF7U5HOR' \
+                                     'G4AA7655NFRNRV2GE3ELJUVWS4S3SM5CPE7L5OHXMYYF7O2RMBRQHYGXQEOVB62DFQ4BI7SXB7ZY' \
+                                     'X7SYE2VS5RABHWRLTORKPIDWJYYVF4UQCIUBDSXOAVHZ2GD46XMBYZLS57TTHIVCE3YANW7UA':
+        message = '<speak>My %s boo boo. %s' % (random.choice(adjectives), message[7:])
 
     return generate_statement_card(message, 'Get Status')
 
